@@ -1,0 +1,17 @@
+{
+  "name": "tdd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "javascript-2.js",
+  "scripts": {
+    "test": mocha
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "^8.3.0"
+    "chai": "^4.3.0"
+  }
+}
