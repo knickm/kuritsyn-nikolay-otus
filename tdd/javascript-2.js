@@ -6,7 +6,7 @@ require("css.escape");
  * @param {HTMLElement} node
  */
 function getPath(node) {
-  if (!node) {
+  if (!(node && node instanceof HTMLElement && node.parentNode)) {
     return null;
   }
 
