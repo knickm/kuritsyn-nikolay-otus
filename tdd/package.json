@@ -4,14 +4,17 @@
   "description": "",
   "main": "javascript-2.js",
   "scripts": {
-    "test": mocha
+    "test": "mocha"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "css.escape": "^1.5.1"
   },
   "devDependencies": {
+    "chai": "^4.3.0",
+    "jsdom": "16.4.0",
+    "jsdom-global": "3.0.2",
     "mocha": "^8.3.0"
-    "chai": "^4.3.0"
   }
 }
