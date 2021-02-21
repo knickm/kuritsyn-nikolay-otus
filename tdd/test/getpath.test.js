@@ -65,6 +65,7 @@ describe("Testing getPath() with described behavior", () => {
       console.error("ERR:", e);
     }
   });
+
   it("Get path for element with parent have unique ID", () => {
     try {
       const el = document.querySelector("#div5\\.1>DIV:nth-child(1)");
@@ -75,6 +76,14 @@ describe("Testing getPath() with described behavior", () => {
       console.error("ERR:", e);
     }
   });
+
+  it("Get path for element with parent have not unique ID", () => {
+    const el = document.querySelector(".not_uniq_parent_id");
+    const path = getPath(el);
+    expect(path).to.be.eq("BODY>*:nth-child(3)>*:first-child");
+    expect(document.querySelectorAll(path).length).to.be.eq(1, "Not unique selector");
+  });
+
   it("Get path for element have escaping ID", () => {
     try {
       const el = document.querySelector("#id311>DIV");
@@ -111,10 +120,4 @@ describe("Testing getPath() with described behavior", () => {
     }
   });
 
-  it("Should not return element id if element's parent has other children with same id", function () {
-    const el = document.querySelector(".not_uniq_parent_id");
-    const path = getPath(el);
-    expect(path).to.be.eq("BODY>*:nth-child(3)>*:first-child");
-    expect(document.querySelectorAll(path).length).to.be.eq(1, "Not unique selector");
-  });
 });
