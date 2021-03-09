@@ -1,0 +1,13 @@
+h1 {
+	text-align: center;
+	color: blueviolet;
+}
+
+my-tree {
+	font-weight: bold;
+	color: brown;
+}
+
+my-tree::part(node-title) {
+	font-weight: bold;
+}
