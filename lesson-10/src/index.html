@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+
+<body>
+	<h1>Создание дерева с помощью пользовательского элемента!</h1>
+	<my-tree id="tree-1" tree='{"id":"t1","items":[{"id":"t2","items":[{"id":"t3"}]}]}'></my-tree>
+
+	<my-node id="node-2" tree='{"id":"n1","items":[{"id":"n2","items":[{"id":"n3"}]}]}'></my-node>
+</body>
+
+</html>

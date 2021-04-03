@@ -1,0 +1,38 @@
+{
+	"name": "lesson-10",
+	"version": "1.0.0",
+	"description": "### Installation",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"test": "jest",
+		"build": "webpack --mode production",
+		"dev": "webpack --mode development",
+		"watch": "webpack  --mode development -w",
+		"start": "webpack serve --mode development --open"
+	},
+	"author": "NickK121",
+	"license": "ISC",
+	"devDependencies": {
+		"@babel/core": "^7.13.14",
+		"@babel/preset-env": "^7.13.12",
+		"@babel/preset-typescript": "^7.13.0",
+		"@types/jest": "^26.0.22",
+		"@types/jsdom": "^16.2.10",
+		"@types/jsdom-global": "^3.0.2",
+		"@types/node": "^14.14.37",
+		"babel-jest": "^26.6.3",
+		"clean-webpack-plugin": "^3.0.0",
+		"css-loader": "^5.2.0",
+		"html-webpack-plugin": "^5.3.1",
+		"jest": "^26.6.3",
+		"jsdom": "^16.5.2",
+		"jsdom-global": "^3.0.2",
+		"style-loader": "^2.0.0",
+		"ts-loader": "^8.1.0",
+		"webpack": "^5.30.0",
+		"webpack-cli": "^4.6.0",
+		"webpack-dev-server": "^3.11.2"
+	},
+	"dependencies": {}
+}
