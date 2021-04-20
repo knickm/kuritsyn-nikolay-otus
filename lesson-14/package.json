@@ -1,0 +1,16 @@
+{
+	"name": "lesson-14",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"tree": "tsc && node dist/tree.js "
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@types/node": "^14.14.37"
+	}
+}
