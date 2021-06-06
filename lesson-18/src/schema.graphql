@@ -1,0 +1,33 @@
+type User {
+  id: ID!
+  name: String!
+  email: String
+  phone: String!
+}
+
+type Product {
+  id: ID!
+  name: String!
+  price: Float!
+}
+
+type Basket {
+  UserId: ID!
+  Goods: [Product!]!
+}
+
+type Query {
+  user(id: ID!): User!
+  goods: [Product!]!
+  baskets: [Basket!]!
+}
+
+type Mutation {
+  addProduct(UserId: ID!, ProductId: ID!): Basket!
+  deleteProduct(UserId: ID!, ProductId: ID!): Basket!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+}
