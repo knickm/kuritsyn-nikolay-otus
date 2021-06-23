@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Link } from 'react-router-dom';
 
 import { CCity } from './city';
+import { unitSign } from './util';
 import config from './config.json';
 
 import '../styles/app.css';
-const { API_URL, API_KEY } = config;
+const { API_URL, API_KEY, UNITS } = config;
 
 export class CityList extends Component {
 	constructor(props) {
@@ -19,7 +20,7 @@ export class CityList extends Component {
 
 	Load() {
 		if (this.state.selected) {
-			fetch(`${API_URL}/weather?q=${this.state.selected.name}&appid=${API_KEY}`)
+			fetch(`${API_URL}/weather?units=${UNITS}&q=${this.state.selected.name}&appid=${API_KEY}`)
 				.then((response) => response.json())
 				.then((d) => {
 					const selected = { ...this.state.selected };
@@ -62,19 +63,18 @@ export class CityList extends Component {
 				<div className="flex-column">
 					<h2>Найти город</h2>
 					<input type="text" name="filter" placeholder="Введите город" value={this.state.filter} onChange={(e) => this.findCity(e)} />
-					<Router>
-						<ul>
-							{this.state.list
-								.filter((c) => c.name.indexOf(this.state.filter) === 0)
-								.map((c, i) => (
-									<li key={'f_' + i}>
-										<Link to={`/weather/${c.name}`}>
-											{c.name} [{c.weather.main.temp} F<sup>o</sup>]
-										</Link>
-									</li>
-								))}
-						</ul>
-					</Router>
+					<ul>
+						{this.state.list
+							.filter((c) => c.name.indexOf(this.state.filter) === 0)
+							.map((c, i) => (
+								<li key={c.name}>
+									<Link to={`/weather/${c.name}`}>
+										{c.name} [{c.weather.main.temp} {unitSign(UNITS)}
+										<sup>o</sup>]
+									</Link>
+								</li>
+							))}
+					</ul>
 				</div>
 			</div>
 		);

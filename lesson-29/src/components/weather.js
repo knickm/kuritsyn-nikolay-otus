@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import { CCity } from './city';
+import { unitSign } from './util';
 
 import '../styles/app.css';
 
 import config from './config.json';
-const { API_URL, API_KEY } = config;
+const { API_URL, API_KEY, UNITS } = config;
 
 export class Weather extends Component {
 	constructor(props) {
@@ -26,7 +27,7 @@ export class Weather extends Component {
 	Load() {
 		if (this.state.city) {
 			const { lon, lat } = this.state.city.weather.coord;
-			fetch(`${API_URL}/onecall?lon=${lon}&lat=${lat}&exclude=minutely,hourly,alert&appid=${API_KEY}`)
+			fetch(`${API_URL}/onecall?units=${UNITS}&lon=${lon}&lat=${lat}&exclude=minutely,hourly,alert&appid=${API_KEY}`)
 				.then((response) => response.json())
 				.then((d) => {
 					const current = { ...d.current };
@@ -49,7 +50,8 @@ export class Weather extends Component {
 				<h2>{this.state.city.name}</h2>
 				<div className="flex-row">
 					<div className="title">
-						Температура(F<sup>o</sup>):
+						Температура({unitSign(UNITS)}
+						<sup>o</sup>):
 					</div>
 					<div className="flex-column align-items-center mr-1">
 						<div>Now</div>
@@ -57,7 +59,7 @@ export class Weather extends Component {
 					</div>
 					{this.state.list.map((w, i) => (
 						<div key={'w_' + i} className="flex-column align-items-center mr-1">
-							<div>{(new Date(w.dt * 1000)).toISOString().slice(0,10)}</div>
+							<div>{new Date(w.dt * 1000).toISOString().slice(0, 10)}</div>
 							<div className="temp">{w.temp.day}</div>
 						</div>
 					))}

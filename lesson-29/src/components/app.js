@@ -9,7 +9,9 @@ class NotFound extends React.Component {
 	render() {
 		return (
 			<div className="flex-column">
-				<h2><Link to="/">На главную</Link></h2>
+				<h2>
+					<Link to="/">На главную</Link>
+				</h2>
 				<h2 style={{ color: 'red' }}>Ресурс не найден</h2>
 			</div>
 		);
@@ -19,14 +21,6 @@ class NotFound extends React.Component {
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			weather: {},
-		};
-		this.myRef = React.createRef();
-	}
-
-	setWeather(weather) {
-		this.setState({ weather });
 	}
 
 	render() {
@@ -41,8 +35,6 @@ class App extends Component {
 							<Route component={NotFound} />
 						</Switch>
 					</Router>
-					{/* <CityList onSetWeather={(e) => this.setWeather(e)} />
-					<Weather key={this.state.weather.main ? this.state.weather.main.temp : ""} weather={this.state.weather} ref={this.myRef}/> */}
 				</div>
 			</>
 		);
