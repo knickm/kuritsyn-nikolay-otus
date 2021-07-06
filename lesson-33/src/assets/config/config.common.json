@@ -12,9 +12,9 @@
 		}
 	],
 	"apiServer": {
-		"url": "https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/2ab232a9-6044-46d0-abc4-8868d520c2d0/v3/translate?version=2018-05-01"
+		"url": "https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/{key-url}/v3/translate?version=2018-05-01"
 	},
 	"appParams": {
-		"user": "apikey:oA-Ao6x07_ktu0HvEoWnmuv4rxxvEHCOM-Yh8b63Yh_C"
+		"user": "${key}"
 	}
 }
