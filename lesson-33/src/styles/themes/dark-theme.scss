@@ -1,0 +1,8 @@
+@import "./_palette.scss";
+
+$custom-background-color: mat-contrast($my-palette, 900);
+$dark-primary: mat-palette($my-palette, 700, 200, 800);
+$dark-accent: mat-palette($my-palette, 300, 100, 500);
+$dark-warn: mat-palette($mat-red, 300);
+
+$dark-theme: mat-dark-theme($dark-primary, $dark-accent, $dark-warn);
