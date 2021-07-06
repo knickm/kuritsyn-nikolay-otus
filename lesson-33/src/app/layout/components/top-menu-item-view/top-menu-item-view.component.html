@@ -1,0 +1,24 @@
+<mat-menu #subItems="matMenu" [overlapTrigger]="false">
+	<ng-container *ngFor="let item of menuItems">
+
+		<!-- Handle main menu items -->
+		<ng-container *ngIf="item.subMenu else linkItemTmpl">
+			<button mat-menu-item color="primary" [matMenuTriggerFor]="menu.subItems">
+				{{ item.title }}q
+			</button>
+			<app-top-menu-item-view #menu [menuItems]="item.subMenu"></app-top-menu-item-view>
+		</ng-container>
+
+		<!-- Handle sub menu items -->
+		<ng-template #linkItemTmpl>
+			<button mat-menu-item *ngIf="item.link else commangItemTmpl" [routerLink]="item.link" [disabled]="item.disabled">
+				{{ item.title }}
+			</button>
+			<ng-template #commangItemTmpl>
+				<button mat-menu-item (click)="onClick(item.action)" [disabled]="item.disabled">
+					{{ item.title }}
+				</button>
+			</ng-template>
+		</ng-template>
+	</ng-container>
+</mat-menu>

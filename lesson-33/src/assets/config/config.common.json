@@ -1,0 +1,20 @@
+{
+	"appName": "Тренажер запоминания иностранных слов",
+	"langList": [
+		{
+			"code": "ru",
+			"name": "Русский",
+			"default": true
+		},
+		{
+			"code": "en",
+			"name": "English"
+		}
+	],
+	"apiServer": {
+		"url": "https://api.eu-gb.language-translator.watson.cloud.ibm.com/instances/${url_key}/v3/translate?version=2018-05-01"
+	},
+	"appParams": {
+		"user": "apikey:${api_key}"
+	}
+}
