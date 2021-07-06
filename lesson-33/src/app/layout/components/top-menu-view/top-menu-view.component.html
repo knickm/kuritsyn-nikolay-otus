@@ -1,0 +1,39 @@
+<!-- Верхнее меню -->
+<mat-toolbar color="primary" class="mat-elevation-z6 flex-row">
+
+	<!-- Меню для десктопной версии -->
+	<div class="top-menu flex-grow" myHide-sm="true">
+					<button mat-button (click)="onClick('Home')">
+						HOME
+					</button>
+		<!-- <a routerLink="/" mat-button attr.aria-label="HOME">
+			<h1 class="menu-app-name">HOME</h1>
+		</a> -->
+
+		<ng-container *ngFor="let item of Items">
+			<!-- Handle main menu items here -->
+			<ng-container *ngIf="item.subMenu else linkItem">
+				<button mat-button [matMenuTriggerFor]="menu.subItems">{{ item.title }}</button>
+				<app-top-menu-item-view #menu [menuItems]="item.subMenu"></app-top-menu-item-view>
+			</ng-container>
+			<!-- Leaf sub menu items here -->
+			<ng-template #linkItem>
+				<!-- <button mat-button [routerLink]="item.link">{{ item.title }}</button> -->
+
+
+
+				<button mat-button *ngIf="item.link else commangItem" [routerLink]="item.link"
+					[disabled]="item.disabled">
+					{{ item.title }}
+				</button>
+				<ng-template #commangItem>
+					<button mat-button (click)="onClick(item.action)" [disabled]="item.disabled">
+						{{ item.title }}
+					</button>
+				</ng-template>
+			</ng-template>
+		</ng-container>
+
+		<!-- <app-top-menu-item-view #menu *ngFor="let item of Items" [isRoot]="true" [menuItem]="item"></app-top-menu-item-view> -->
+	</div>
+</mat-toolbar>
