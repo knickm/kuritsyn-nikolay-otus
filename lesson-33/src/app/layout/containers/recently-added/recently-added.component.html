@@ -1,0 +1,22 @@
+<div>
+	<form [formGroup]="Form" (ngSubmit)="Form.valid && sendData()" novalidate
+		class="flex-column align-center flex-grow">
+
+		<mat-form-field style="width: 300px">
+			<input matInput type="text" class="form-control" name="word" formControlName="Word" required
+				placeholder="Новое слово" />
+			<mat-error *ngIf="Form.get('Word')?.hasError('required')">
+				Это поле обязательно для ввода
+			</mat-error>
+		</mat-form-field>
+
+		<button mat-raised-button [disabled]="loading" type="submit" class="m05tb">
+			Добавить&nbsp;
+			<i class="fas fa-save"></i>
+		</button>
+	</form>
+	<div *ngFor="let w of wordList$ | async">
+		{{w.word}} - {{w.translate}}
+	</div>
+
+</div>

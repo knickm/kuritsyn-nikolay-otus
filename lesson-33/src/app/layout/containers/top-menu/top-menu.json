@@ -1,0 +1,7 @@
+{
+	"Items": [
+		{ "action": "RecentlyAdded", "title": "Последние добавленные слова" },
+		{ "action": "Go", "title": "Упражнения" },
+		{ "action": "Settings", "title": "Настройки" }
+	]
+}
