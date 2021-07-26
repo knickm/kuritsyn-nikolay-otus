@@ -1,0 +1,32 @@
+{
+	"appName": "WordTrainer (HOME WORK)",
+	"langList": [
+		{
+			"code": "ru",
+			"name": "Русский",
+			"default": true
+		},
+		{
+			"code": "en",
+			"name": "English"
+		}
+	],
+	"apiServer": {
+		"url": "http://localhost:4200/api",
+		"pathPrefix1": "instances",
+		"pathPrefix2":"v3/translate?version=2018-05-01"
+	},
+	"appParams": {
+		"user": "apikey:${apikey}"
+	},
+	"themeList": [
+		{
+			"code": "light-theme",
+			"name": "Светлый"
+		},
+		{
+			"code": "dark-theme",
+			"name": "Темный"
+		}
+	]
+}

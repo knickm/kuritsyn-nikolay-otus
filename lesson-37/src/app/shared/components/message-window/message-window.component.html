@@ -1,0 +1,18 @@
+<div class="flex-column justify-around align-center flex-grow-100">
+	<div class="error" *ngIf="Error">
+		{{Error}}
+	</div>
+	<div class="success" *ngIf="Message">
+		{{Message}}
+	</div>
+	<div class="warning" *ngIf="Warning">
+		{{Warning}}
+	</div>
+	<div class="button-block" *ngIf="Type === 'confirm' else ok">
+		<button mat-raised-button (click)="onOkClick()" attr.aria-label="{{ 'yes'}}">{{'yes'}}</button>
+		<button mat-raised-button (click)="onNoClick()" attr.aria-label="{{ 'no'}}">{{'no'}}</button>
+	</div>
+	<ng-template #ok>
+		<button mat-raised-button (click)="onOkClick()" attr.aria-label="{{ 'close'}}">{{'close'}}</button>
+	</ng-template>
+</div>
