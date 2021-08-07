@@ -1,0 +1,19 @@
+<mat-toolbar color="primary" class="mat-elevation-z6 flex-row">
+
+	<div class="flex-row flex-grow" myHide-sm="true">
+		<a routerLink="/" mat-button attr.aria-label="HOME">
+			<h1 class="menu-app-name">Главная</h1>
+		</a>
+
+		<ng-container *ngFor="let item of Items">
+			<a mat-button [routerLink]="item.link">{{ item.title }}</a>
+		</ng-container>
+	</div>
+
+	<div>
+		<a mat-button routerLink="settings">
+			<fa-icon [icon]="faCog"></fa-icon>
+		</a>
+		<app-theme-switch class="mr-2"></app-theme-switch>
+	</div>
+</mat-toolbar>

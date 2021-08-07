@@ -1,0 +1,63 @@
+<div class="flex-row justify-center m-5">
+	<form [formGroup]="Form" (ngSubmit)="Form.valid && saveSettings()" novalidate class="flex-column"
+		style="width: 600px">
+		<h4 class="m-2">Настройка приложения</h4>
+
+		<mat-form-field appearance="fill" class="flex-grow m-2">
+			<mat-label>Переводить с языка</mat-label>
+			<mat-select [formControl]="FromLangCtrl" name="fromLang">
+				<mat-option *ngFor="let item of langList" value="{{item.code}}">{{item.name}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field appearance="fill" class="flex-grow m-2">
+			<mat-label>Переводить на язык</mat-label>
+			<mat-select [formControl]="ToLangCtrl" name="toLang">
+				<mat-option *ngFor="let item of langList" value="{{item.code}}">{{item.name}}</mat-option>
+			</mat-select>
+		</mat-form-field>
+
+		<mat-form-field class="flex-grow m-2">
+			<mat-label>Количество слов в упражнении</mat-label>
+			<input matInput type="number" class="form-control" name="numberWords" [formControl]="NumberWordsCtrl"
+				required placeholder="Слов в упражнении" />
+			<mat-error *ngIf="NumberWordsCtrl.hasError('required')">
+				Это поле обязательно для ввода
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="flex-grow m-2">
+			<mat-label>Сколько времени на упражнение (мин)</mat-label>
+			<input matInput type="number" class="form-control" name="duration" [formControl]="DurationCtrl" required
+				placeholder="Время в минутах" />
+			<mat-error *ngIf="DurationCtrl.hasError('required')">
+				Это поле обязательно для ввода
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="flex-grow m-2">
+			<mat-label>Api Key</mat-label>
+			<input matInput type="text" class="form-control" name="apiKey" [formControl]="ApiKeyCtrl" required
+				placeholder="Ключ API для сервиса IBM Language Translator" />
+			<mat-error *ngIf="ApiKeyCtrl.hasError('required')">
+				Это поле обязательно для ввода
+			</mat-error>
+		</mat-form-field>
+
+		<mat-form-field class="flex-grow m-2">
+			<mat-label>URL Key</mat-label>
+			<input matInput type="text" class="form-control" name="urlKey" [formControl]="UrlKeyCtrl" required
+				placeholder="Ключ URL для сервиса IBM Language Translator" />
+			<mat-error *ngIf="UrlKeyCtrl.hasError('required')">
+				Это поле обязательно для ввода
+			</mat-error>
+		</mat-form-field>
+
+		<div>
+			<button mat-raised-button [disabled]="loading" type="submit">
+				Сохранить<fa-icon [icon]="faSave" class="ml-2"></fa-icon>
+			</button>
+		</div>
+
+	</form>
+</div>

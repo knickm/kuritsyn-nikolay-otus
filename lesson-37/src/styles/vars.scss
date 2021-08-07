@@ -1,0 +1,21 @@
+$media-max-width: 720px;
+$main-color: rgba(0, 0, 0, 0.66);
+$max-width: 72rem;
+
+$min-height-nav: 3rem;
+$min-height-header: 30.5rem;
+$min-height-footer: 4rem;
+$min-height-page: calc(100vh - 64px - 64px);
+
+
+$color-error: #e53535;
+$color-success: #35e535;
+$color-warning: #f59535;
+$color-alarm-title: rgba(255, 0, 0, 0.1);
+$color-link: #3344ff;
+$color-lightgray: hsl(0, 0%, 95%);
+
+$indicator-default-color: #cccccc;
+$indicator-alarm-color: $color-error;
+$indicator-warn-color: $color-warning;
+$indicator-done-color: $color-success;

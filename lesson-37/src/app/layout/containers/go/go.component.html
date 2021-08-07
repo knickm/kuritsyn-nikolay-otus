@@ -1,0 +1,34 @@
+<ng-container *ngIf="started; else start">
+	<div class="timer mat-elevation-z8">
+		<strong>До завершения осталось:</strong><br/>
+		{{ floor(duration / 60) }}:{{ duration % 60 }}
+	</div>
+	<div class="timer mat-elevation-z8 mt-4">
+		{{ selectedWord?.word }}
+	</div>
+	<form [formGroup]="Form" (ngSubmit)="Form.valid && checkWord()" novalidate
+		class="flex-column align-center flex-grow">
+		<mat-form-field style="width: 600px">
+			<input matInput type="text" class="form-control" name="word" formControlName="Word" required
+				placeholder="Ваш ответ" />
+			<mat-error *ngIf="Form.get('Word')?.hasError('required')">
+				Это поле обязательно для ввода
+			</mat-error>
+		</mat-form-field>
+
+		<button mat-raised-button type="submit" class="m05tb">
+			Далее&nbsp;
+			<i class="fas fa-save"></i>
+		</button>
+	</form>
+</ng-container>
+
+<ng-template #start>
+	<div class="result mat-elevation-z8 mt-4" style="width: 600px;">
+		<h2>Ваш результат</h2>
+		{{ result }} правильно переведенных слов из {{ words.length }}
+	</div>
+	<button mat-raised-button type="button" class="m05tb" (click)="onStart()">
+		Старт<i class="fas fa-save ml-2"></i>
+	</button>
+</ng-template>
