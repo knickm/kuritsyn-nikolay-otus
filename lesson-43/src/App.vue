@@ -34,10 +34,13 @@ body {
 	padding: 4rem;
 	text-align: left;
 }
-field {
+.field {
 	display: flex;
 	flex-direction: column;
 	padding-top: 1rem;
+}
+.mt-1 {
+	margin-top: 1rem;
 }
 .pt-1 {
 	padding-top: 1rem;
@@ -59,8 +62,18 @@ button {
 .flex {
 	display: flex;
 }
-.justify-content-around {
-	justify-content: around;
+.flex-column {
+	display: flex;
+	flex-direction: column;
+}
+.flex-grow {
+	flex-grow: 1;
+}
+.justify-content-center {
+	justify-content: center;
+}
+.justify-content-between {
+	justify-content: space-between;
 }
 .justify-content-end {
 	justify-content: flex-end;

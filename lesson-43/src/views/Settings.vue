@@ -1,59 +1,66 @@
 <template>
-	<div class="card">
-		<h1>Привет!</h1>
-		<p>
-			Добро пожаловать на {{ numberLesson }} тренировочный день.<br />
-			Ваш последний результат - решено {{ score }} из {{ maxScore }} .<br />
-			Общая точность {{ Math.round((score / maxScore) * 100) }}%.
-		</p>
-		<h3>Настройки</h3>
-		<field>
-			<input type="range" v-model="duration" min="1" max="15" step="1" />
-			<label>Длительность {{ duration }} минут</label>
-		</field>
+	<div class="flex-column justify-content-center" style="height: 100vh;">
+		<div class="card">
+			<h1>Привет!</h1>
+			<p>
+				Добро пожаловать на {{ numberLesson }} тренировочный день.<br />
+				Ваш последний результат - решено {{ score }} из {{ maxScore }} .<br />
+				Общая точность {{ maxScore > 0 ? Math.round((score / maxScore) * 100) : 0 }}%.
+			</p>
+			<h3>Настройки</h3>
+			<div class="field">
+				<input type="range" v-model="duration" min="1" max="15" step="1" />
+				<label>Длительность {{ duration }} минут</label>
+			</div>
 
-		<field>
-			<input type="range" v-model="complexity" min="1" max="15" step="1" />
-			<label>Сложность {{ complexity }}</label>
-		</field>
+			<div class="field">
+				<input type="range" v-model="complexity" min="1" max="10" step="1" />
+				<label>Сложность {{ complexity }}</label>
+			</div>
 
-		<div class="pt-1">
-			<input id="adding" type="checkbox" v-model="summation" />
-			<label for="adding">Суммирование</label>
-		</div>
-		<div>
-			<input id="adding" type="checkbox" v-model="difference" />
-			<label for="adding">Разность</label>
-		</div>
-		<div>
-			<input id="adding" type="checkbox" v-model="multiplication" />
-			<label for="adding">Умножение</label>
-		</div>
-		<div>
-			<input id="adding" type="checkbox" v-model="division" />
-			<label for="adding">Деление</label>
-		</div>
-		<div>
-			<input id="adding" type="checkbox" v-model="exponentiation" />
-			<label for="adding">Возведение в степень</label>
-		</div>
+			<div class="pt-1">
+				<input id="summation" type="checkbox" v-model="summation" />
+				<label for="summation">Суммирование</label>
+			</div>
+			<div>
+				<input id="difference" type="checkbox" v-model="difference" />
+				<label for="difference">Разность</label>
+			</div>
+			<div>
+				<input id="multiplication" type="checkbox" v-model="multiplication" />
+				<label for="multiplication">Умножение</label>
+			</div>
+			<div>
+				<input id="division" type="checkbox" v-model="division" />
+				<label for="division">Деление</label>
+			</div>
+			<div>
+				<input id="exponentiation" type="checkbox" v-model="exponentiation" />
+				<label for="exponentiation">Возведение в степень</label>
+			</div>
 
-		<div class="flex justify-content-end pt-1">
-			<router-link class="btn" to="/play">Play!</router-link>
+			<div class="flex justify-content-end pt-1">
+				<router-link class="btn" to="/play">Play!</router-link>
+			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import { store } from '../Store';
+
+const NUMBER_LESSON_REMEMBERS = 'NUMBER_LESSON_REMEMBERS';
 export default {
 	name: 'Settings',
-	data: () => ({
-		numberLesson: 1,
-		score: 0,
-		maxScore: 1,
-		duration: 1,
-		complexity: 1,
-	}),
+	data: () => store.state,
+	mounted() {
+		const d = new Date();
+		const nl = localStorage.getItem(NUMBER_LESSON_REMEMBERS);
+		const h = JSON.parse(nl || '{}');
+		h[d.toLocaleDateString()] = true;
+		store.state.numberLesson = Object.keys(h).length;
+		localStorage.setItem(NUMBER_LESSON_REMEMBERS, JSON.stringify(h));
+	},
 };
 </script>
 
