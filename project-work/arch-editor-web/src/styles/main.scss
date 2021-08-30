@@ -1,0 +1,129 @@
+@import './vars.scss';
+@import './flex.scss';
+
+* {
+	margin: 0;
+	padding: 0;
+	font-family: Roboto, Arial, Helvetica, sans-serif;
+	box-sizing: border-box;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+li {
+	list-style: none;
+	display: inline-block;
+}
+
+.error,
+.danger,
+.success,
+.warning {
+	font-weight: 500 !important;
+	font-size: 1.5rem !important;
+	text-align: center !important;
+}
+
+.error,
+.danger {
+	color: $color-error !important;
+}
+
+.success {
+	color: $color-success !important;
+}
+
+.warning {
+	color: $color-warning !important;
+}
+
+.not-visibility {
+	visibility: hidden;
+}
+
+.hide {
+	display: none;
+}
+
+a {
+	color: $color-link;
+}
+
+h1,
+h2,
+h3 {
+	font-weight: 300;
+	letter-spacing: 5px;
+}
+
+h2 {
+	line-height: 2rem;
+}
+
+// Вспомогательные классы
+.cursor-pointer {
+	cursor: pointer;
+}
+
+.shadow {
+	border-radius: 1px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.2);
+}
+
+.position-relative {
+	position: relative;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.position-absolute-full {
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100%;
+	height: 100%;
+}
+
+@media screen and (min-width: 1141px) {
+	.mat-tooltip {
+		font-size: 12px !important;
+	}
+}
+
+.mat-snack-bar-container {
+	color: hsla(0, 0%, 100%, 0.7);
+	background: #323232;
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);
+}
+
+@media screen and (min-width: 1141px) {
+	.mat-cell,
+	.mat-footer-cell {
+		font-size: 14px !important;
+	}
+	.mat-header-cell {
+		font-size: 16px !important;
+		font-weight: 500 !important;
+	}
+}
+@media screen and (min-width: 960px) {
+	.mat-cell,
+	.mat-footer-cell {
+		font-size: 12px !important;
+	}
+	.mat-header-cell {
+		font-size: 14px !important;
+		font-weight: 500 !important;
+	}
+}
+.mat-cell,
+.mat-footer-cell {
+	font-size: 12px !important;
+}
+.mat-header-cell {
+	font-size: 14px !important;
+	font-weight: 500 !important;
+}

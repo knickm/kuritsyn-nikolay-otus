@@ -1,0 +1,6 @@
+<ng-template *ngIf="Project; else newProject">
+	{{ Project!.name }}
+</ng-template>
+<ng-template #newProject>
+	<a routerLink="/arch/project-edite" mat-raised-button color="primary">Новый проект</a>
+</ng-template>

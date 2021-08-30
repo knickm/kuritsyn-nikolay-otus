@@ -1,0 +1,6 @@
+<div class="flex-column flex-grow-100 align-center">
+	<h1 class="mt-4 mnb-4">Авторизация</h1>
+	<ng-container *ngIf="!(isAuth$ | async)">
+		<app-auth></app-auth>
+	</ng-container>
+</div>

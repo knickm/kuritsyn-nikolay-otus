@@ -1,0 +1,23 @@
+<form class="flex-column flex-grow-100 justify-between" style="width:400px" [formGroup]="AuthForm"
+	(ngSubmit)="AuthForm.valid && onLogin()" novalidate>
+
+	<mat-form-field dividerColor="accent">
+		<input matInput type="test" formControlName="login" required placeholder="Логин" />
+		<mat-error *ngIf="LoginCtrl.hasError('required')">
+			Вы не ввели логин
+		</mat-error>
+	</mat-form-field>
+
+	<mat-form-field dividerColor="accent">
+		<input matInput type="password" formControlName="password" required placeholder="Пароль" />
+		<mat-error *ngIf="PasswordCtrl.hasError('required')">
+			Пожалуйста введите пароль
+		</mat-error>
+	</mat-form-field>
+
+	<div class="flex-row justify-center mt-3">
+		<button mat-raised-button [disabled]="loading" type="submit" attr.aria-label="Войти">
+			<h2>Войти</h2>
+		</button>
+	</div>
+</form>

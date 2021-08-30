@@ -1,0 +1,27 @@
+{
+	"appName": "Система электронного документооборота ТЦИ",
+	"langList": [
+		{
+			"code": "ru",
+			"name": "Русский",
+			"default": true
+		},
+		{
+			"code": "en",
+			"name": "English"
+		}
+	],
+	"appParams": {
+		"underConstruction": true
+	},
+	"themeList": [
+		{
+			"code": "light-theme",
+			"name": "Светлый"
+		},
+		{
+			"code": "dark-theme",
+			"name": "Темный"
+		}
+	]
+}

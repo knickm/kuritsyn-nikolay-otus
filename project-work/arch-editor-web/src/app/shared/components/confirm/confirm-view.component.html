@@ -1,0 +1,7 @@
+<div class="confirm flex-column justify-around align-center flex-grow">
+	<div class="warning" [innerHTML]="Message"></div>
+	<div class="button-block">
+		<button mat-raised-button (click)="onOkClick()">{{ btnYES }}</button>
+		<button mat-raised-button (click)="onNoClick()">{{ btnNO }}</button>
+	</div>
+</div>

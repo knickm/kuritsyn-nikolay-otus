@@ -1,0 +1,76 @@
+@import 'styles-variables';
+
+// @import '~bootstrap/scss/bootstrap';
+@import 'style-reset';
+
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+@import './styles/themes/light-theme.scss';
+@import './styles/themes/dark-theme.scss';
+
+@import './styles/main.scss';
+
+@import './styles/util.scss';
+
+// import custom component themes here
+@import 'styles-reset.scss-theme';
+// @import 'app/modules/home/page/project-item/project-container.component.scss-theme.scss';
+
+@mixin custom-components-theme($theme) {
+	@include styles-reset-theme($theme);
+	@include project-container-component-theme($theme);
+}
+
+.light-theme {
+	@include angular-material-theme($light-theme);
+	@include custom-components-theme($light-theme);
+	background-color: $light-background-color;
+}
+
+.dark-theme {
+	@include angular-material-theme($dark-theme);
+	@include custom-components-theme($dark-theme);
+	background-color: $dark-background-color;
+	color: mat-contrast($my-palette, 700);
+}
+
+@media screen and (min-width: 960px) {
+	$custom-typography: mat-typography-config(
+		$input: mat-typography-level(14px, 1.1, 300),
+	);
+	@include mat-core($custom-typography);
+}
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+@media screen and (min-width: 1141px) {
+	$custom-typography: mat-typography-config(
+		$font-family: 'Roboto, monospace',
+		$headline: mat-typography-level(32px, 48px, 700),
+		$body-1: mat-typography-level(18px, 26px, 500),
+	);
+	// Override the typography in the core CSS.
+	@include mat-core($custom-typography);
+	// Для конфигурации см: https://github.com/angular/material2/blob/master/src/lib/core/typography/_typography.scss
+}
+
+@each $key, $value in $grid-breakpoints {
+	@media screen and (min-width: #{$value}) {
+		[myHide-#{$key}='false'] {
+			display: none;
+		}
+
+		[myLayout-#{$key}='column'] {
+			flex-direction: column;
+		}
+	}
+
+	@media screen and (max-width: #{$value}) {
+		[myHide-#{$key}='true'],
+		[myShow-#{$key}='false'] {
+			display: none;
+		}
+	}
+}

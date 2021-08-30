@@ -1,0 +1,12 @@
+:host {
+	display: block;
+	> div {
+		border: 1px solid #fff;
+		border-radius: 6px;
+		padding: 0.25rem;
+		&.selected {
+			background-color: skyblue;
+			border-color: blue;
+		}
+	}
+}
