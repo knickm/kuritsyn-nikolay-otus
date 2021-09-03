@@ -1,6 +1,7 @@
 import { ElementsMenuComponent } from "./elements-menu/elements-menu.component";
 import { ElementsPropertyComponent } from "./elements-property/elements-property.component";
 import { ActorElementComponent } from "./elements/actor-element/actor-element.component";
+import { AnchorComponent } from "./elements/anchor/anchor.component";
 import { UseCaseElementComponent } from "./elements/use-case-element/use-case-element.component";
 import { MouseEventDirective } from "./plot/mouse-event.directive";
 import { PlotComponent } from "./plot/plot.component";
@@ -16,6 +17,7 @@ export const components = [
 	ElementsMenuComponent,
 	ElementsPropertyComponent,
 
+	AnchorComponent,
 	ActorElementComponent,
 	UseCaseElementComponent,
 ];

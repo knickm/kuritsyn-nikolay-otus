@@ -62,6 +62,8 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 		return range(0, this.height, 10 * DPI);
 	}
 
+	private list: Array<ComponentRef<CommonUMLType>> = [];
+
 	constructor(
 		private injector: Injector,
 		private componentFactoryResolver: ComponentFactoryResolver,
@@ -102,26 +104,6 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 		}
 	}
 
-	private _drawGridCanvas() {
-		const canvas = this.canvas.nativeElement;
-		if (canvas.getContext) {
-			var ctx: CanvasRenderingContext2D = canvas.getContext("2d");
-			ctx.beginPath();
-			ctx.lineWidth = 1;
-			ctx.strokeStyle = 'rgba(135, 206, 235, 0.3)';
-			const step = 10 * DPI;
-			for (let x = step - 1; x < this.width; x += step) {
-				ctx.moveTo(x, 0);
-				ctx.lineTo(x, this.height);
-			}
-			for (let y = step - 1; y < this.height; y += step) {
-				ctx.moveTo(0, y);
-				ctx.lineTo(this.width, y);
-			}
-			ctx.stroke();
-		}
-	}
-
 	private selectType(element: string): Type<CommonUMLType> | undefined {
 		return {
 			'actor': ActorElementComponent,
@@ -151,16 +133,10 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 			componentRef.instance.left = p.x;
 		}
 		this.contentRef.insert(componentRef.hostView);
+		componentRef.instance.id = this.list.length;
 		componentRef.instance.ngOnInit();
+		componentRef.instance.selected = true;
 		componentRef.instance.cdRef.detectChanges();
-
-		// const componentRef = factory.create(this.injector);
-
-		// if (!(componentRef && componentRef.instance)) {
-		// 	console.error('Cannot create element:', this.element, eType);
-		// 	return;
-		// }
-
-		// this.viewContainerRef.insert(componentRef.hostView);
+		this.list.push(componentRef);
 	}
 }

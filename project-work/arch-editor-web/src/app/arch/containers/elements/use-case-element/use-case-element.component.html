@@ -1,1 +1,15 @@
-<app-ellipse [width]="100" [height]="50"></app-ellipse>
+<app-ellipse [appMouseEvent]="'usecase_'+id" [width]="width" [height]="height">
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_nw'" [appAnchor]="id + '_nw'" [Type]="'nw'" [attr.Type]="'nw'"
+		[Position]="{x:0, y:0}" (submitedResize)="onResize($event)"></svg:g>
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_ne'" [appAnchor]="id + '_ne'" [Type]="'ne'" [attr.Type]="'ne'"
+		[Position]="{x:width-10, y:0}" (submitedResize)="onResize($event)"></svg:g>
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_se'" [appAnchor]="id + '_se'" [Type]="'se'" [attr.Type]="'se'"
+		[Position]="{x:width-10, y:height-10}" (submitedResize)="onResize($event)"></svg:g>
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_sw'" [appAnchor]="id + '_sw'" [Type]="'sw'" [attr.Type]="'sw'"
+		[Position]="{x:0, y:height-10}" (submitedResize)="onResize($event)"></svg:g>
+
+</app-ellipse>

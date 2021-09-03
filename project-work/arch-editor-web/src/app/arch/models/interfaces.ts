@@ -10,3 +10,6 @@ export interface ITextPosition {
 	y: number;
 	v: string;
 }
+
+
+export type AnchorType = 'ne' | 'nw' | 'se' | 'sw';
