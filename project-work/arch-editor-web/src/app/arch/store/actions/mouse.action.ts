@@ -20,7 +20,7 @@ export const MouseUp = createAction(MouseActionTypes.MOUSE_UP, props<{ elementId
 export const MouseOut = createAction(MouseActionTypes.MOUSE_OUT, props<{ elementId: string }>());
 
 // перемещение мыши
-export const MouseMove = createAction(MouseActionTypes.MOUSE_MOVE, props<{ elementId: string, position: IPoint }>());
+export const MouseMove = createAction(MouseActionTypes.MOUSE_MOVE, props<{ elementId: string, position: IPoint, movement: IPoint }>());
 
 // прокрутка колеса мыши
 export const MouseWheel = createAction(MouseActionTypes.MOUSE_WHEEL, props<{ elementId: string, wheel: number }>());

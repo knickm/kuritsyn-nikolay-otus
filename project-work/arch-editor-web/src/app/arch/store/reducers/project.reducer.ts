@@ -13,10 +13,18 @@ const initialState: IProjectState = {
 const projectReducer = createReducer<IProjectState>(
 	initialState,
 	on(fromAction.Open, (state) => ({ ...state, project: null, error: null, message: null })),
-	on(fromAction.LoadList, (state) => ({ ...state, project: null, error: null, message: null })),
-
 	on(fromAction.OpenSuccess, (state, project) => ({ ...state, project })),
+
+	on(fromAction.LoadList, (state) => ({ ...state, project: null, error: null, message: null })),
 	on(fromAction.LoadSuccess, (state, { list }) => ({ ...state, list })),
+
+	on(fromAction.Save, (state, project) => ({ ...state, project, error: null, message: null })),
+	on(fromAction.SaveSuccess, (state, p) => {
+		const project = { ...state.project! };
+		project.id = p.id;
+		return { ...state, project };
+	}),
+
 	on(fromAction.Fail, (state, error) => ({ ...state, error })),
 );
 

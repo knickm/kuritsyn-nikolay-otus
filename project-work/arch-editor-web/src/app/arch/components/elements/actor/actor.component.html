@@ -1,18 +1,19 @@
-<svg #plot [attr.viewBox]="'0 0 '+width+' '+height" xmlns="http://www.w3.org/2000/svg" [attr.width]="width"
-	[attr.height]="height">
-	<g>
-		<!-- head -->
-		<circle [attr.cx]="width/2" [attr.cy]="height/6" [attr.r]="height/6 - 4" fill="none" stroke="black"/>
+<!-- <svg #plot [attr.viewBox]="'0 0 '+width+' '+height" xmlns="http://www.w3.org/2000/svg" [attr.width]="width"
+	[attr.height]="height"> -->
+<svg:g>
+	<!-- head -->
+	<circle [attr.cx]="x+width/2" [attr.cy]="y+height/6" [attr.r]="height/6 - 4" fill="none" stroke="black" />
 
-		<!-- body -->
-		<line [attr.x1]="width/2" [attr.x2]="width/2" [attr.y1]="height/3" [attr.y2]="height*2/3" stroke="black"/>
+	<!-- body -->
+	<line [attr.x1]="x+width/2" [attr.x2]="x+width/2" [attr.y1]="y+height/3" [attr.y2]="y+height*2/3" stroke="black" />
 
-		<!-- arms -->
-		<line [attr.x1]="0" [attr.x2]="width" [attr.y1]="height/3" [attr.y2]="height/3" stroke="black" />
+	<!-- arms -->
+	<line [attr.x1]="x" [attr.x2]="x+width" [attr.y1]="y+height/3" [attr.y2]="y+height/3" stroke="black" />
 
-		<!-- leg -->
-		<line [attr.x1]="0" [attr.x2]="width/2" [attr.y1]="height" [attr.y2]="height*2/3" stroke="black" />
-		<line [attr.x1]="width/2" [attr.x2]="width" [attr.y1]="height*2/3" [attr.y2]="height" stroke="black" />
+	<!-- leg -->
+	<line [attr.x1]="x" [attr.x2]="x+width/2" [attr.y1]="y+height" [attr.y2]="y+height*2/3" stroke="black" />
+	<line [attr.x1]="x+width/2" [attr.x2]="x+width" [attr.y1]="y+height*2/3" [attr.y2]="y+height" stroke="black" />
 
-	</g>
-</svg>
+</svg:g>
+<ng-content></ng-content>
+<!-- </svg> -->

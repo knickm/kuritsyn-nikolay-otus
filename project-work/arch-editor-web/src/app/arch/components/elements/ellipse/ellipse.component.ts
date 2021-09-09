@@ -2,7 +2,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ShapeComponent } from '../shape/shape.component';
 
 @Component({
-	selector: 'app-ellipse',
+	selector: '[appEllipse]',
 	templateUrl: './ellipse.component.html',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

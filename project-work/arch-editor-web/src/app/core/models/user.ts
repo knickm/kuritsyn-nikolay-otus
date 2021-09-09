@@ -1,5 +1,4 @@
 import { b64EncodeUnicode } from "../util/base64";
-import { UserRole } from "./role";
 
 /**
  * Параметры формы авторизации. (Login form)
@@ -13,24 +12,18 @@ export interface IAuthParams {
  * Данные пользователя
  */
 export interface IUser {
-	uuid: string;
-	email: string;
-	role: UserRole;
+	id: number;
+	login: string;
 }
 
+
 export class User implements IUser {
-	uuid: string;
-	email: string;
-	role: UserRole;
+	id: number;
+	login: string;
 
 	constructor(u: IUser) {
-		this.uuid = u.uuid;
-		this.email = u.email;
-		this.role = u.role;
-	}
-
-	CanEdit(): boolean {
-		return this.role === UserRole.secretary;
+		this.id = u.id;
+		this.login = u.login;
 	}
 }
 

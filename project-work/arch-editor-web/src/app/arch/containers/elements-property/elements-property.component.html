@@ -1,1 +1,9 @@
-<p>elements-property works!</p>
+<mat-form-field dividerColor="accent">
+	<input matInput type="test" [(ngModel)]="name" required placeholder="Название" #nameRef
+		(change)="onChangeName(nameRef.value)" />
+</mat-form-field>
+
+<mat-form-field dividerColor="accent">
+	<textarea matInput type="test" [(ngModel)]="description" placeholder="Описание" rows="10" #descriptionRef
+		(change)="onChangeDescription(descriptionRef.value)"></textarea>
+</mat-form-field>

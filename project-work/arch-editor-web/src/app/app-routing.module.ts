@@ -18,6 +18,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'arch',
+		canActivate: [AuthGuard],
 		loadChildren: () => ArchModule
 	},
 	{

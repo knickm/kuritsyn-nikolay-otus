@@ -1,10 +1,25 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './auth.guard';
+import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
+import { ProjectModule } from './project/project.module';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+	imports: [
+		AuthModule,
+		ConfigModule.forRoot({
+			envFilePath: '.env',
+			isGlobal: true,
+		}),
+		ProjectModule
+	],
+	controllers: [],
+	providers: [
+		{
+			provide: APP_GUARD,
+			useClass: AuthGuard,
+		},
+	],
 })
-export class AppModule {}
+export class AppModule { }

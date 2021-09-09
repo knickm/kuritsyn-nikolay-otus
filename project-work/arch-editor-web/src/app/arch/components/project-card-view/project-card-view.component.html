@@ -1,6 +1,9 @@
-<ng-template *ngIf="Project; else newProject">
-	{{ Project!.name }}
-</ng-template>
+<div *ngIf="Project; else newProject" class="flex-column justify-center align-center">
+	{{ Project.id }}
+	{{ Project.name }}
+	{{ Project.date }}
+	<a routerLink="/arch/project-edite/{{ Project.id }}" mat-raised-button color="primary">{{ Project.name }}</a>
+</div>
 <ng-template #newProject>
 	<a routerLink="/arch/project-edite" mat-raised-button color="primary">Новый проект</a>
 </ng-template>

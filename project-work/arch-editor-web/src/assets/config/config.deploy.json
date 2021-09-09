@@ -3,7 +3,7 @@
 		"name": "prod"
 	},
 	"apiServer": {
-		"url": "http://camunda.tcinet.su",
-		"pathPrefix": "api/v1"
+		"url": "http://localhost:4200",
+		"pathPrefix": "api"
 	}
 }

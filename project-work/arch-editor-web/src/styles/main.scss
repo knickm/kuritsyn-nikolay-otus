@@ -87,6 +87,10 @@ h2 {
 	height: 100%;
 }
 
+.transparent-events {
+	pointer-events: none;
+}
+
 @media screen and (min-width: 1141px) {
 	.mat-tooltip {
 		font-size: 12px !important;

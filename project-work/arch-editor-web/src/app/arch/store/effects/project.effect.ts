@@ -45,20 +45,20 @@ export class ProjectEffects {
 		)
 	);
 
-	// save$ = createEffect(() =>
-	// 	this.actions$.pipe(
-	// 		// Filters by Action Creator 'Login'
-	// 		ofType(fromAction.Save),
-	// 		tap(_ => this.coreStore.dispatch(fromCore.LoadingAction({ loading: true }))),
-	// 		switchMap(project => this.projectServices.save(project).pipe(
-	// 			map(msg => {
-	// 				return fromAction.SaveSuccess(msg);
-	// 			}),
-	// 			catchError((error: IResponseMessage) => of(fromAction.Fail(error))),
-	// 			finalize(() => this.coreStore.dispatch(fromCore.LoadingAction({ loading: false })))
-	// 		)),
-	// 	)
-	// );
+	save$ = createEffect(() =>
+		this.actions$.pipe(
+			// Filters by Action Creator 'Login'
+			ofType(fromAction.Save),
+			tap(_ => this.coreStore.dispatch(fromCore.LoadingAction({ loading: true }))),
+			switchMap(project => this.projectServices.save(project).pipe(
+				map(project => {
+					return fromAction.SaveSuccess({ id: project as number });
+				}),
+				catchError((error: IResponseMessage) => of(fromAction.Fail(error))),
+				finalize(() => this.coreStore.dispatch(fromCore.LoadingAction({ loading: false })))
+			)),
+		)
+	);
 
 	constructor(
 		private actions$: Actions,

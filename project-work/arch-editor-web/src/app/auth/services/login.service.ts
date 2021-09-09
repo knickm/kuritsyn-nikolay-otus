@@ -7,7 +7,7 @@ import { IUser, User } from 'src/app/core/models/user';
 
 @Injectable()
 export class LoginService extends CommonService<IUser, User | null> {
-	protected action = 'auth';
+	protected action = 'authorize';
 
 	constructor(config: AppConfig, http: HttpClient) {
 		super(config, http);

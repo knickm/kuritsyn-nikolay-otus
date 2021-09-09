@@ -30,4 +30,8 @@ export class ProjectService extends CommonService<Array<IProject>, Array<IProjec
 	load(): Observable<Array<IProject>> {
 		return this.getData();
 	}
+
+	save(project: IProject): Observable<number | IProject[]> {
+		return this.sendData(project)
+	}
 }

@@ -1,15 +1,24 @@
-<app-ellipse [appMouseEvent]="'usecase_'+id" [width]="width" [height]="height">
+<svg:g appEllipse [appMouseEvent]="'usecase_'+id" [x]="x" [y]="y" [width]="width" [height]="height">
 
 	<svg:g *ngIf="selected" [appMouseEvent]="id + '_nw'" [appAnchor]="id + '_nw'" [Type]="'nw'" [attr.Type]="'nw'"
-		[Position]="{x:0, y:0}" (submitedResize)="onResize($event)"></svg:g>
+		[Position]="{x:x-width/2, y:y-height/2}" (onDrag)="onResize($event)"></svg:g>
 
 	<svg:g *ngIf="selected" [appMouseEvent]="id + '_ne'" [appAnchor]="id + '_ne'" [Type]="'ne'" [attr.Type]="'ne'"
-		[Position]="{x:width-10, y:0}" (submitedResize)="onResize($event)"></svg:g>
+		[Position]="{x:x+width/2-10, y:y-height/2}" (onDrag)="onResize($event)"></svg:g>
 
 	<svg:g *ngIf="selected" [appMouseEvent]="id + '_se'" [appAnchor]="id + '_se'" [Type]="'se'" [attr.Type]="'se'"
-		[Position]="{x:width-10, y:height-10}" (submitedResize)="onResize($event)"></svg:g>
+		[Position]="{x:x+width/2-10, y:y+height/2-10}" (onDrag)="onResize($event)"></svg:g>
 
 	<svg:g *ngIf="selected" [appMouseEvent]="id + '_sw'" [appAnchor]="id + '_sw'" [Type]="'sw'" [attr.Type]="'sw'"
-		[Position]="{x:0, y:height-10}" (submitedResize)="onResize($event)"></svg:g>
+		[Position]="{x:x-width/2, y:y+height/2-10}" (onDrag)="onResize($event)"></svg:g>
 
-</app-ellipse>
+	<svg:foreignObject class="transparent-events" [appMouseEvent]="'onarrow_'+id" [attr.x]="x-width/2+10"
+		[attr.y]="y-height/2+10" [attr.width]="width-20" [attr.height]="height-20">
+		<div class="flex-row justify-center align-center name">{{options.name}}</div>
+	</svg:foreignObject>
+
+</svg:g>
+<svg:foreignObject [appMouseEvent]="'onarrow_'+id" [attr.x]="x+width/2" [attr.y]="y-height/2" width="24" height="24">
+	<mat-icon aria-hidden="false" aria-label="Link to anofer element" class="cursor-pointer" (click)="CreateLink()">
+		arrow_circle_up</mat-icon>
+</svg:foreignObject>

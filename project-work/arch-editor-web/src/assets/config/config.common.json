@@ -1,16 +1,5 @@
 {
-	"appName": "Система электронного документооборота ТЦИ",
-	"langList": [
-		{
-			"code": "ru",
-			"name": "Русский",
-			"default": true
-		},
-		{
-			"code": "en",
-			"name": "English"
-		}
-	],
+	"appName": "Редактор архитектуры ПО",
 	"appParams": {
 		"underConstruction": true
 	},

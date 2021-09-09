@@ -76,7 +76,7 @@ export class AppConfig {
 
 	get themeList(): Array<IThemeDescription> {
 		return this.configData?.themeList || [{
-			"code": "tci-light-theme",
+			"code": "light-theme",
 			"name": "Светлый"
 		}];
 	}

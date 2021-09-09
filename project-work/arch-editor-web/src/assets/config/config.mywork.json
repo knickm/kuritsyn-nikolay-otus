@@ -1,9 +1,0 @@
-{
-	"env": {
-		"name": "#{envName}"
-	},
-	"apiServer": {
-		"url": "https://mywork.garden",
-		"pathPrefix": "api/v1"
-	}
-}

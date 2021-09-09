@@ -45,25 +45,27 @@ export class MouseEventDirective implements OnDestroy {
 			fromEvent<MouseEvent>(this.elRef.nativeElement, 'mousemove')
 				.pipe(takeUntil(this.unsubscribe$))
 				.subscribe(e => {
+					console.log('movementY:', e.movementY, '; offsetY:', e.offsetY);
 					this.store.dispatch(
 						fromStore.mouseAction.MouseMove({
 							elementId: this.appMouseEvent,
-							position: new Point(e.offsetX, e.offsetY).toObject()
+							position: new Point(e.offsetX, e.offsetY).toObject(),
+							movement: new Point(e.movementX, e.movementY).toObject()
 						})
 					);
 					e.stopPropagation();
 					e.preventDefault();
 				});
 
-			fromEvent<MouseEvent>(this.elRef.nativeElement, 'mouseout')
-				.pipe(takeUntil(this.unsubscribe$))
-				.subscribe(e => {
-					this.store.dispatch(
-						fromStore.mouseAction.MouseOut({ elementId: this.appMouseEvent })
-					);
-					e.stopPropagation();
-					e.preventDefault();
-				});
+			// fromEvent<MouseEvent>(this.elRef.nativeElement, 'mouseout')
+			// 	.pipe(takeUntil(this.unsubscribe$))
+			// 	.subscribe(e => {
+			// 		this.store.dispatch(
+			// 			fromStore.mouseAction.MouseOut({ elementId: this.appMouseEvent })
+			// 		);
+			// 		e.stopPropagation();
+			// 		e.preventDefault();
+			// 	});
 		})
 	}
 

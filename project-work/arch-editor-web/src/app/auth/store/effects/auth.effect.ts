@@ -23,7 +23,7 @@ export class AuthEffects {
 			tap(_ => this.coreStore.dispatch(fromCore.LoadingAction({ loading: true }))),
 			switchMap(action => this.authServices.login(action).pipe(
 				map(user => {
-					this.router.navigate(['cmda/protocol-list']);
+					this.router.navigate(['arch/project-list']);
 					return fromAction.AuthSuccess(user as IUser);
 				}),
 				catchError((error: IResponseMessage) => of(fromAction.AuthFail(error))),
