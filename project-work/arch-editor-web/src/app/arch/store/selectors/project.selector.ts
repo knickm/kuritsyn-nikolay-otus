@@ -10,7 +10,9 @@ export const getProjectState = createSelector(
 
 export const getProject = createSelector(
 	getProjectState,
-	(state: IProjectState) => state.project
+	(state: IProjectState) => {
+		return state.project
+	}
 );
 
 export const getProjectList = createSelector(

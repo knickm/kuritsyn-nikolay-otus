@@ -10,6 +10,7 @@ export class ActorElementComponent extends CommonElementComponent {
 	protected init(): void {
 		this.options.width = 50;
 		this.options.height = 100;
-		this.options.name = 'Actor';
+		this.options.name ||= 'Actor';
+		this.options.elementType = 'actor';
 	}
 }

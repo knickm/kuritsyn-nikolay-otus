@@ -21,7 +21,8 @@ export class UseCaseElementComponent extends CommonElementComponent {
 	protected init(): void {
 		this.options.width = 100;
 		this.options.height = 50;
-		this.options.name = 'Use Case';
+		this.options.name ||= 'Use Case';
+		this.options.elementType = 'usecase';
 	}
 
 	calcStartPos(endPos: IPoint): IPoint {
@@ -31,7 +32,7 @@ export class UseCaseElementComponent extends CommonElementComponent {
 		const cy = this.y;
 		const x = endPos.x > cx ? cx + w2 : cx - w2;
 		const y = endPos.y > cy ? cy + h2 : cy - h2;
-console.log(endPos, cx, cy, x, y);
+		// console.log(endPos, cx, cy, x, y);
 		return { x, y };
 	}
 }

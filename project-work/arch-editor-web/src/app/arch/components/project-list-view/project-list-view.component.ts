@@ -10,7 +10,6 @@ export class ProjectListViewComponent implements OnInit {
 
 	@Input()
 	set List(v: Array<IProject> | null) {
-		console.log('LIST:::::', v);
 		this.list = v || [];
 	}
 	get List(): Array<IProject> | null {

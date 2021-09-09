@@ -5,6 +5,7 @@ export interface IProjectParams {
 export interface IElement {
 	id: number;
 	elementId: string;
+	elementType: string;
 	x: number;
 	y: number;
 	width: number;

@@ -22,7 +22,7 @@ export class ProjectEffects {
 			tap(_ => this.coreStore.dispatch(fromCore.LoadingAction({ loading: true }))),
 			switchMap(action => this.projectServices.open(action.id).pipe(
 				map(project => {
-					return fromAction.OpenSuccess(project[0]);
+					return fromAction.OpenSuccess(project);
 				}),
 				catchError((error: IResponseMessage) => of(fromAction.Fail(error))),
 				finalize(() => this.coreStore.dispatch(fromCore.LoadingAction({ loading: false })))

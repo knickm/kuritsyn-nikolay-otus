@@ -1,4 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { select, Store } from '@ngrx/store';
 import { IElement } from '../../models/interfaces';
 import { IProject } from '../../models/project';
@@ -41,9 +42,14 @@ export class ProjectEditorComponent implements OnInit {
 		private cdRef: ChangeDetectorRef,
 		private storeMenu: Store<fromStore.menuState.IMenuState>,
 		private storeProject: Store<fromStore.projectState.IProjectState>,
-	) { }
+		private activateRoute: ActivatedRoute,
+	) {
+
+	}
 
 	ngOnInit(): void {
+		const id = this.activateRoute.snapshot.params['id'];
+		this.storeProject.dispatch(fromStore.projectAction.Open({ id }));
 	}
 
 	onSelected(event: IElement) {

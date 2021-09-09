@@ -19,6 +19,7 @@ export abstract class CommonElementComponent implements OnInit, OnDestroy {
 	options: IElement = {
 		id: 0,
 		elementId: '',
+		elementType: '',
 		x: 0,
 		y: 0,
 		width: 0,

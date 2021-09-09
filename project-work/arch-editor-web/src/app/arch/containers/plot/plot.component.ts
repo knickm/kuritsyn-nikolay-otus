@@ -57,7 +57,11 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 	private unsubscribe$ = new Subject();
 
 	@Input()
-	project: IProject | null = null;
+	set project(v: IProject | null) {
+		this._project = v;
+		this.makeElements();
+	}
+	_project: IProject | null = null;
 
 	@Input()
 	element: string | null = null;
@@ -171,7 +175,7 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 		}[element];
 	}
 
-	addElement(p: IPoint | null) {
+	addElement(p: IPoint | null, name?: string, width?: number, height?: number) {
 		if (!this.element) {
 			console.error('BAD ELEMENT:', p, this.element);
 			return;
@@ -195,11 +199,12 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 		componentRef.instance.options = {
 			id: this.elementSelected,
 			elementId: this.element + '_' + this.elementSelected,
+			elementType: this.element,
 			x: p!.x,
 			y: p!.y,
-			width: 100,
-			height: 100,
-			name: ''
+			width: width || 100,
+			height: height || 100,
+			name: name || ''
 		};
 
 		componentRef.instance.onSelected.subscribe(e => {
@@ -276,17 +281,26 @@ export class PlotComponent implements OnInit, AfterViewInit, OnDestroy {
 	}
 
 	Save() {
-		if (this.project === null) {
-			this.project = {
+		if (this._project === null) {
+			this._project = {
 				date: today().toLocaleDateString(),
 				name: today().toLocaleDateString(),
 				params: { editable: true },
 				elements: []
 			};
 		} else {
-			this.project.date = today().toLocaleDateString();
+			this._project.date = today().toLocaleDateString();
 		}
-		this.project.elements = this.elementList.map(c => c.instance.options);
-		this.onSave.emit(this.project);
+		this._project.elements = this.elementList.map(c => c.instance.options);
+		this.onSave.emit(this._project);
+	}
+
+	private makeElements() {
+		if (this._project && this._project.elements) {
+			this._project.elements.forEach(e => {
+				this.element = e.elementType;
+				this.addElement({ x: e.x, y: e.y }, e.name, e.width, e.height);
+			});
+		}
 	}
 }

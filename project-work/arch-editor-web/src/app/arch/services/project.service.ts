@@ -23,8 +23,8 @@ export class ProjectService extends CommonService<Array<IProject>, Array<IProjec
 		return [];
 	}
 
-	open(id: number): Observable<Array<IProject>> {
-		return this.getData(id.toString());
+	open(id: number): Observable<IProject> {
+		return this.getData(id.toString()) as Observable<IProject>;
 	}
 
 	load(): Observable<Array<IProject>> {

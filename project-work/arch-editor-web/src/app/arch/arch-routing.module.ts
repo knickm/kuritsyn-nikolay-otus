@@ -19,6 +19,10 @@ const routes: Routes = [
 		pathMatch: 'full',
 		component: ProjectEditorComponent
 	},
+	{
+		path: 'project-edite/:id',
+		component: ProjectEditorComponent
+	},
 ];
 
 @NgModule({

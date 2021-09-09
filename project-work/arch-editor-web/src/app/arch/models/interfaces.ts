@@ -29,6 +29,7 @@ export type DrawMode = 'create' | 'link';
 export interface IElement {
 	id: number;
 	elementId: string;
+	elementType: string; // 'actor' | 'usecase';
 	x: number;
 	y: number;
 	width: number;
