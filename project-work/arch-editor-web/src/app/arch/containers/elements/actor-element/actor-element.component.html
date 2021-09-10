@@ -1,0 +1,19 @@
+<svg:g appActor [appMouseEvent]="'actor_'+id" [x]="x" [y]="y" [width]="width" [height]="height">
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_nw'" [appAnchor]="id + '_nw'" [Type]="'nw'" [attr.Type]="'nw'"
+		[Position]="{x:x, y:y}" (onDrag)="onResize($event)"></svg:g>
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_ne'" [appAnchor]="id + '_ne'" [Type]="'ne'" [attr.Type]="'ne'"
+		[Position]="{x:x+width-10, y:y}" (onDrag)="onResize($event)"></svg:g>
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_se'" [appAnchor]="id + '_se'" [Type]="'se'" [attr.Type]="'se'"
+		[Position]="{x:x+width-10, y:y+height-10}" (onDrag)="onResize($event)"></svg:g>
+
+	<svg:g *ngIf="selected" [appMouseEvent]="id + '_sw'" [appAnchor]="id + '_sw'" [Type]="'sw'" [attr.Type]="'sw'"
+		[Position]="{x:x, y:y+height-10}" (onDrag)="onResize($event)"></svg:g>
+
+</svg:g>
+<svg:foreignObject [appMouseEvent]="'onarrow_'+id" [attr.x]="x+width" [attr.y]="y" width="24" height="24">
+	<mat-icon aria-hidden="false" aria-label="Link to anofer element" class="cursor-pointer" (click)="CreateLink()">
+		arrow_circle_up</mat-icon>
+</svg:foreignObject>

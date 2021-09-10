@@ -1,0 +1,8 @@
+rect[type="nw"],
+rect[type="se"] {
+	cursor: nwse-resize;
+}
+rect[type="ne"],
+rect[type="sw"] {
+	cursor: nesw-resize;
+}

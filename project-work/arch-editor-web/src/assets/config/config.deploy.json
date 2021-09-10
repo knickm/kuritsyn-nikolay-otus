@@ -1,0 +1,9 @@
+{
+	"env": {
+		"name": "prod"
+	},
+	"apiServer": {
+		"url": "http://localhost:4200",
+		"pathPrefix": "api"
+	}
+}

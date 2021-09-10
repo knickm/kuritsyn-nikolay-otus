@@ -1,0 +1,16 @@
+{
+	"appName": "Редактор архитектуры ПО",
+	"appParams": {
+		"underConstruction": true
+	},
+	"themeList": [
+		{
+			"code": "light-theme",
+			"name": "Светлый"
+		},
+		{
+			"code": "dark-theme",
+			"name": "Темный"
+		}
+	]
+}
